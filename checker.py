@@ -11,7 +11,7 @@ TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
 # List the career pages you want to monitor
 CAREER_URLS = [
-    "https://example.com/careers"  # Replace with actual target career page URL
+    "https://apply.careers.microsoft.com/careers"  # Replace with actual target career page URL
 ]
 
 def send_telegram_message(text):
@@ -50,7 +50,7 @@ def check_pages():
             # 3. Use Gemini to parse new roles cleanly
             prompt = f"""
             Analyze the following text extracted from a company career page. 
-            Identify if there are any active job openings (especially looking for Software, AI, or tech roles).
+            Identify if there are any active job openings (especially looking for Software, AI, Data, or tech roles).
             Extract the Job Titles, Locations, and any direct application links found.
             
             Page text snippet:
@@ -60,7 +60,7 @@ def check_pages():
             """
             
             response = client.models.generate_content(
-                model="gemini-2.5-flash",
+                model="gemini-3.1-flash-lite",
                 contents=prompt,
             )
             
